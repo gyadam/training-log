@@ -1,8 +1,10 @@
-const express = require("express");
-const cors = require("cors");
-const mongoose = require("mongoose");
+import express from "express";
+import cors from "cors";
+import mongoose from "mongoose";
+import * as dotenv from "dotenv"; // see https://github.com/motdotla/dotenv#how-do-i-use-dotenv-with-import
+dotenv.config();
 
-require("dotenv").config();
+import usersRouter from "./routes/users.js";
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -22,10 +24,6 @@ connection.once("open", () => {
   console.log("MongoDB database connection established successfully");
 });
 
-const exercisesRouter = require("./server/exercises");
-const usersRouter = require("./server/users");
-
-app.use("/exercises", exercisesRouter);
 app.use("/users", usersRouter);
 
 app.listen(port, () => {
