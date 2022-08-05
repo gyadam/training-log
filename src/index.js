@@ -6,6 +6,8 @@ dotenv.config();
 
 import users from "./routes/users.js";
 import notes from "./routes/notes.js";
+import exercises from "./routes/exercises.js";
+import workouts from "./routes/workouts.js";
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -27,6 +29,8 @@ connection.once("open", () => {
 
 app.use("/users", users);
 app.use("/notes", notes);
+app.use("/exercises", exercises);
+app.use("/workouts", workouts);
 
 app.listen(port, () => {
   console.log(`Server is listening on port ${port}`);

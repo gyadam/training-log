@@ -1,19 +1,64 @@
 import mongoose from "mongoose";
 
-const exerciseSchema = new mongoose.Schema(
-  {
-    username: { type: String, required: true },
-    description: { type: String, required: true },
-    sport: { type: String, required: true },
-    type: { type: String, required: true },
-    duration: { type: Number, required: true },
-    effort: { type: Number, required: true },
-    date: { type: Date, required: true },
+const exerciseSchema = new mongoose.Schema({
+  title: {
+    type: String,
+    required: true,
+    trim: true,
+    minlength: 3,
   },
-  {
-    timestamps: true,
-  }
-);
+  category: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+  },
+  description: {
+    type: String,
+    required: true,
+    trim: true,
+    minlength: 3,
+  },
+  duration: {
+    type: Number,
+    required: true,
+  },
+  prepTime: {
+    type: Number,
+    required: true,
+  },
+  numSets: {
+    type: Number,
+    required: true,
+  },
+  numReps: {
+    type: Number,
+    required: true,
+  },
+  repTime: {
+    type: Number,
+    required: true,
+  },
+  restBetweenReps: {
+    type: Number,
+    required: true,
+  },
+  restBetweenSets: {
+    type: Number,
+    required: true,
+  },
+  resistance: {
+    type: Number,
+    required: true,
+  },
+  imageUrl: {
+    type: String,
+    trim: true,
+  },
+  isAssessment: {
+    type: Boolean,
+    required: true,
+    default: false,
+  },
+});
 
 const Exercise = mongoose.model("Exercise", exerciseSchema);
 
