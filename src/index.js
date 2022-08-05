@@ -5,6 +5,7 @@ import * as dotenv from "dotenv"; // see https://github.com/motdotla/dotenv#how-
 dotenv.config();
 
 import users from "./routes/users.js";
+import notes from "./routes/notes.js";
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -25,6 +26,7 @@ connection.once("open", () => {
 });
 
 app.use("/users", users);
+app.use("/notes", notes);
 
 app.listen(port, () => {
   console.log(`Server is listening on port ${port}`);
