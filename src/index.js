@@ -4,7 +4,7 @@ import mongoose from "mongoose";
 import * as dotenv from "dotenv"; // see https://github.com/motdotla/dotenv#how-do-i-use-dotenv-with-import
 dotenv.config();
 
-import userRouter from "./routes/user.js";
+import users from "./routes/users.js";
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -24,7 +24,7 @@ connection.once("open", () => {
   console.log("MongoDB database connection established successfully");
 });
 
-app.use("/user", userRouter);
+app.use("/users", users);
 
 app.listen(port, () => {
   console.log(`Server is listening on port ${port}`);
